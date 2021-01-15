@@ -59,6 +59,4 @@ public abstract class Place {
 	public void setBoatDisponibility(boolean boatDisponibility) {
 		this.boatDisponibility = boatDisponibility;
 	}
-	
-	
 }
