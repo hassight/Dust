@@ -1,4 +1,4 @@
-package business;
+package business.data;
 
 public class Hotel {
 	private String name;

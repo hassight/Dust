@@ -1,4 +1,4 @@
-package business;
+package business.data;
 
 public class HotelEntry {
 	private int minPrice = 0;

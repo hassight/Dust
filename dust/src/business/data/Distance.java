@@ -1,4 +1,4 @@
-package business;
+package business.data;
 
 public final class Distance {
 	public static double getKMDistance(Coordinates coordinates1, Coordinates coordinates2) {
