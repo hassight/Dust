@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Excursion {
 	private ArrayList<Ride> rides = new ArrayList<Ride>();
-	private ArrayList<Place> places = new ArrayList<Place>();
-	private double price;
+	private ArrayList<AbstractSite> visitedSites = new ArrayList<AbstractSite>();
+	private boolean restDay;
 	
 	public Excursion() {
 		
@@ -19,32 +19,24 @@ public class Excursion {
 		this.rides = rides;
 	}
 
-	public ArrayList<Place> getPlaces() {
-		return places;
+	public ArrayList<AbstractSite> getVisitedSites() {
+		return visitedSites;
 	}
 
-	public void setPlaces(ArrayList<Place> places) {
-		this.places = places;
-	}
-	
-	public double getPrice() {
-		for (Ride ride : rides) {
-			price += ride.getTripCost();
-		}
-		
-		for (Place place : places) {
-			price += place.getPrice();
-		}
-		
-		return price;
+	public void setVisitedSites(ArrayList<AbstractSite> visitedSites) {
+		this.visitedSites = visitedSites;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public boolean isRestDay() {
+		return restDay;
+	}
+
+	public void setRestDay(boolean restDay) {
+		this.restDay = restDay;
 	}
 
 	@Override
 	public String toString() {
-		return "Excursion [rides: " + rides + ", places: " + places + "]";
+		return "Excursion [rides: " + rides + ", visitedSites: " + visitedSites + "]";
 	}
 }

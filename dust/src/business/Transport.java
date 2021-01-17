@@ -2,18 +2,12 @@ package business;
 
 public class Transport {
 	// each km costs 10cts more
-	public static double BUS_FACTOR = 0.1;
-	
+	public static double FACTOR = 0.1;
 	private TransportEnum type;
 	private int price;
 	
-	public Transport(TransportEnum type) {
-		this.setType(type);
-		if (type == TransportEnum.BUS) {
-			price = 2;
-		} else {
-			price = 15;
-		}
+	public Transport() {
+
 	}
 	
 	public TransportEnum getType() {
