@@ -18,6 +18,6 @@ public class Hotel extends Place {
 	@Override
 	public String toString() {
 		return "Hotel [name: " + super.getName() + ", price: " + super.getPrice() + ", beachName: " + beachName
-				+ ", coordinates: " + super.getCoordinates() + ", description: " + super.getDescription() + "]";
+				+ ", coordinates: " + super.getCoordinates() + "]";
 	}
 }

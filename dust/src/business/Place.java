@@ -2,7 +2,6 @@ package business;
 
 public abstract class Place {
 	private String name;
-	private String description;
 	private int price;
 	private Coordinates coordinates;
 	private boolean busDisponibility;
@@ -18,14 +17,6 @@ public abstract class Place {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 	public int getPrice() {
