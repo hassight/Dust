@@ -6,11 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Queries {
-
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultsSet;
 
-	
 	/**
 	 * Close the preparedStatement
 	 */
@@ -70,7 +68,7 @@ public class Queries {
 	 * 
 	 * @return idSite
 	 */
-	public int addSite(String name, String type, int price,boolean bus_disponibility,boolean boat_disponibility ,double latitude, double longitude) {
+	public int addSite(String name, String type, int price, double latitude, double longitude) {
 		int idSite = 0;
 		try {
 			String addCoordinates = "INSERT INTO coordinates (latitude, longitude) VALUES (?, ?)";
@@ -103,14 +101,13 @@ public class Queries {
 				keys.next();
 				idSite = keys.getInt(1);
 				this.closePreparedStatement();
-			}
-			else {
+			} else {
 				return 0;
 			}
 		} catch (SQLException se) {
 			System.err.println(se.getMessage());
 		}
-		
+	
 		return idSite;
 	}
 
@@ -138,9 +135,7 @@ public class Queries {
 	
 	
 	public void fillRides() {
-
         PreparedStatement insertStatement, countStatement, fetchStatement;
-
 
         try {
             String addRideQuery = "INSERT INTO ride (departure_site, arrival_site, id_transport) VALUES (?,?,?)";
@@ -161,39 +156,50 @@ public class Queries {
 
             result.next();
             
-            for (int k = 2; k<= tailleSite; k++) {
-                insertStatement.setInt(1,1);
-                insertStatement.setInt(2,k);
+            /*for (int k = 2; k <= tailleSite; k++) {
+                insertStatement.setInt(1, 1);
+                insertStatement.setInt(2, k);
                 if(result.getInt(1) == 19 || k == 19) {
-                    insertStatement.setInt(3,2);
-                }else {
-                    insertStatement.setInt(3,1);
+                    insertStatement.setInt(3, 2);
+                } else {
+                    insertStatement.setInt(3, 1);
                 }
                 insertStatement.executeUpdate();
             }
             
             while(result.next()) {
-
                 for (int i = 1; i <= tailleSite; i++) {
-                    if(result.getInt(1)!=i) {
-                        insertStatement.setInt(1,result.getInt(1));
-                        insertStatement.setInt(2,i);
+                    if(result.getInt(1) != i) {
+                        insertStatement.setInt(1, result.getInt(1));
+                        insertStatement.setInt(2, i);
                         if(result.getInt(1) == 19 || i == 19) {
-                            insertStatement.setInt(3,2);
-                        }else {
-                            insertStatement.setInt(3,1);
+                            insertStatement.setInt(3, 2);
+                        } else {
+                            insertStatement.setInt(3, 1);
                         }
                         insertStatement.executeUpdate();
-                    }
-                    
+                    }                    
                 }
-
-
+            }*/
+            
+            while (result.next()) {
+            	for (int i = 1; i <= tailleSite; i++) {
+            		if(result.getInt(1) != i) {
+            			insertStatement.setInt(1, result.getInt(1));
+                        insertStatement.setInt(2, i);
+                        
+                        if(result.getInt(1) == 19 || i == 19) {
+                            insertStatement.setInt(3, 2);
+                        } else {
+                            insertStatement.setInt(3, 1);
+                        }
+                        
+                        insertStatement.executeUpdate();
+            		}
+            	}
             }
-
         } catch (SQLException se) {
             System.err.println(se.getMessage());
         }
-
     }
 }
