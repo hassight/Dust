@@ -88,16 +88,14 @@ public class Queries {
 			this.closePreparedStatement();
 			
 			if(result != 0) {
-				String addSite = "INSERT INTO site (name, type, price, bus_disponibility, boat_disponibility, id_coordinates) VALUES (?, ?, ?, ?, ?, ?)";
+				String addSite = "INSERT INTO site (name, type, price, id_coordinates) VALUES (?, ?, ?, ?)";
 			
 				this.preparedStatement = JdbcConnection.getConnection().prepareStatement(addSite);
 				
 				this.preparedStatement.setString(1, name);
 				this.preparedStatement.setString(2, type);
 				this.preparedStatement.setInt(3, price);
-				this.preparedStatement.setBoolean(4, bus_disponibility);
-				this.preparedStatement.setBoolean(5, boat_disponibility);
-				this.preparedStatement.setInt(6, idCoordinates);
+				this.preparedStatement.setInt(4, idCoordinates);
 		
 				result = this.preparedStatement.executeUpdate();
 				
@@ -145,7 +143,7 @@ public class Queries {
 
 
         try {
-            String addRideQuery = "INSERT INTO ride (departure, arrival, id_transport) VALUES (?,?,?)";
+            String addRideQuery = "INSERT INTO ride (departure_site, arrival_site, id_transport) VALUES (?,?,?)";
             String getSitesQuery = "SELECT * FROM site";
             String getSizeSite = "SELECT COUNT(*) FROM site" ;
 
