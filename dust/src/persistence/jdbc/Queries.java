@@ -143,9 +143,9 @@ public class Queries {
             String getSizeSite = "SELECT COUNT(*) FROM site" ;
 
             countStatement = JdbcConnection.getConnection().prepareStatement(getSizeSite);
-            ResultSet taille = countStatement.executeQuery();
-            taille.next();
-            int tailleSite = taille.getInt(1);
+            ResultSet sizeSite = countStatement.executeQuery();
+            sizeSite.next();
+            int tailleSite = sizeSite.getInt(1);
             countStatement.close();
 
             fetchStatement = JdbcConnection.getConnection().prepareStatement(getSitesQuery);
@@ -155,32 +155,6 @@ public class Queries {
             insertStatement = JdbcConnection.getConnection().prepareStatement(addRideQuery);
 
             result.next();
-            
-            /*for (int k = 2; k <= tailleSite; k++) {
-                insertStatement.setInt(1, 1);
-                insertStatement.setInt(2, k);
-                if(result.getInt(1) == 19 || k == 19) {
-                    insertStatement.setInt(3, 2);
-                } else {
-                    insertStatement.setInt(3, 1);
-                }
-                insertStatement.executeUpdate();
-            }
-            
-            while(result.next()) {
-                for (int i = 1; i <= tailleSite; i++) {
-                    if(result.getInt(1) != i) {
-                        insertStatement.setInt(1, result.getInt(1));
-                        insertStatement.setInt(2, i);
-                        if(result.getInt(1) == 19 || i == 19) {
-                            insertStatement.setInt(3, 2);
-                        } else {
-                            insertStatement.setInt(3, 1);
-                        }
-                        insertStatement.executeUpdate();
-                    }                    
-                }
-            }*/
             
             while (result.next()) {
             	for (int i = 1; i <= tailleSite; i++) {
