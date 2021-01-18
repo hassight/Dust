@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+
+	
+	<bean id="site" class="business.data.AbstractSite"
+		abstract="true" scope="prototype" />
+
+	<bean id="activity" class="business.data.ActivitySite"
+		parent="site">
+	</bean>
+	<bean id="historic" class="business.data.HistoricSite"
+		parent="site">
+	</bean>
+	<bean id="offer" class="business.data.Offer" scope="prototype"/>
+	<bean id="hotel" class="business.data.Hotel" scope="prototype"/>
+	<bean id="distance" class="business.data.Distance" scope="prototype"/>
+	<bean id="excursion" class="business.data.Excursion" scope="prototype"/>
+	<bean id="transport" class="business.data.Transport" scope="prototype"/>
+	<bean id="ride" class="business.data.Ride" scope="prototype"/>
+	<bean id="SiteEntry" class="business.data.SiteEntry" scope="prototype"/>
+	<bean id="HotelEntry" class="business.data.HotelEntry" scope="prototype"/>
+	
+	
+
+</beans>
