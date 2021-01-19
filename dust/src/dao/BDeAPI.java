@@ -23,6 +23,6 @@ public interface BDeAPI {
 	boolean addSiteInDirectory(String name, String type, int price, double latitude, double longitude, String description);
 	
 	HashMap<BigDecimal, HashMap<String, String>> mixedQueries (String query) throws CorruptIndexException, SQLException, IOException;
-	
+
 	ArrayList<BigDecimal> sortHashMapKeys(HashMap<BigDecimal, HashMap<String, String>> unsortedHashMap);
 }
