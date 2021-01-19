@@ -27,12 +27,12 @@ public class Excursion {
 		this.visitedSites = visitedSites;
 	}
 
-	public boolean isRestDay() {
+	public boolean isRest() {
 		return rest;
 	}
 
-	public void setRestDay(boolean restDay) {
-		this.rest = restDay;
+	public void setRest(boolean rest) {
+		this.rest = rest;
 	}
 
 	@Override
