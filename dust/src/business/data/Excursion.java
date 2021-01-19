@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Excursion {
 	private ArrayList<Ride> rides = new ArrayList<Ride>();
 	private ArrayList<AbstractSite> visitedSites = new ArrayList<AbstractSite>();
-	private boolean restDay;
+	private boolean rest;
 	
 	public Excursion() {
 		
@@ -28,11 +28,11 @@ public class Excursion {
 	}
 
 	public boolean isRestDay() {
-		return restDay;
+		return rest;
 	}
 
 	public void setRestDay(boolean restDay) {
-		this.restDay = restDay;
+		this.rest = restDay;
 	}
 
 	@Override
