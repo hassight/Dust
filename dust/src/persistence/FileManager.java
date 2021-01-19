@@ -1,15 +1,8 @@
 package persistence;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class FileManager {
 	public static boolean createFile(String name) {
@@ -35,17 +28,8 @@ public class FileManager {
 		boolean success = false;
 		
 		if (content != null && content.length() > 0) {
-			try (BufferedWriter wr = Files.newBufferedWriter(Paths.get(name), StandardCharsets.UTF_8)) {
-	            wr.write(content);
-	            
-	            success = true;
-	        } catch (IOException e) {
-				e.printStackTrace();
-				
-				success = false;
-			}
-			/*try {
-				/*FileWriter fileWriter = new FileWriter(name);
+			try {
+				FileWriter fileWriter = new FileWriter(name);
 				fileWriter.write(content);
 				fileWriter.close();
 	
@@ -54,7 +38,7 @@ public class FileManager {
 				e.printStackTrace();
 				
 				success = false;
-			}*/
+			}
 		}
 		
 		return success;

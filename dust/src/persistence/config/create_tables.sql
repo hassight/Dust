@@ -4,8 +4,8 @@ USE tahiti;
 
 CREATE TABLE coordinates (
 	id_coordinates INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	latitude FLOAT NOT NULL,
-	longitude FLOAT NOT NULL
+	latitude DOUBLE NOT NULL,
+	longitude DOUBLE NOT NULL
 )ENGINE=InnnoDB;
 
 CREATE TABLE transport (

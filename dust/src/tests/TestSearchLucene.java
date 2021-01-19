@@ -20,7 +20,7 @@ public class TestSearchLucene {
 			Searcher searcher = new Searcher(indexer.getIndexDirectoryPath(), indexer.getSecondFieldName());
 	
 			try {
-				searcher.search(indexer.getMaxSearch(), "botanique harrison");
+				searcher.search(indexer.getMaxSearch(), "parc");
 			} catch (org.apache.lucene.queryparser.classic.ParseException e) {
 				e.printStackTrace();
 			}
