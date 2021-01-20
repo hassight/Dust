@@ -20,7 +20,7 @@ public interface BDeAPI {
 	
 	Searcher executeTextualQuery(String query);
 	
-	boolean addSiteInDirectory(String name, String type, int price, double latitude, double longitude, String description);
+	boolean addSiteInDirectory(String directory, String name, String type, int price, double latitude, double longitude, String description);
 	
 	HashMap<BigDecimal, HashMap<String, String>> mixedQueries (String query) throws CorruptIndexException, SQLException, IOException;
 

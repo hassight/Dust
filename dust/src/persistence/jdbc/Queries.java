@@ -58,7 +58,7 @@ public class Queries {
 	}
 	
 	/**
-	 * Insert lines in database to add a site
+	 * Insert lines in coordinates and site to add a site
 	 * 
 	 * @param name
 	 * @param type
@@ -132,7 +132,6 @@ public class Queries {
 	private void setResultsSet(ResultSet resultsSet) {
 		this.resultsSet = resultsSet;
 	}
-	
 	
 	public void fillRides() {
         PreparedStatement insertStatement, countStatement, fetchStatement;

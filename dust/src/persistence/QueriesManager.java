@@ -55,7 +55,7 @@ public class QueriesManager implements BDeAPI {
 		}
 	}
 	
-	public boolean addSiteInDirectory(String name, String type, int price, double latitude, double longitude, String description) {
+	public boolean addSiteInDirectory(String directory, String name, String type, int price, double latitude, double longitude, String description) {
 		if(!this.isAlreadyIndexed()) {
 			this.createIndex();
 			this.setAlreadyIndexed(true);
@@ -63,7 +63,7 @@ public class QueriesManager implements BDeAPI {
 		
 		Queries queries = new Queries();
 		int idSite = queries.addSite(name, type, price, latitude, longitude);
-		String fileName = "data/" + String.valueOf(idSite) + ".txt";
+		String fileName = directory + "/" + String.valueOf(idSite) + ".txt";
 		
 		boolean creationSuccess = FileManager.createFile(fileName);
 		
@@ -95,6 +95,7 @@ public class QueriesManager implements BDeAPI {
 			this.setAlreadyIndexed(true);
 		}
 		
+		// We call Queries class to execute the SQL part (using JDBC)
 		Queries queries = new Queries();
 		queries.executeQuery(query);
 		
