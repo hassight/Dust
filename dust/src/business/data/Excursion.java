@@ -6,6 +6,7 @@ public class Excursion {
 	private ArrayList<Ride> rides = new ArrayList<Ride>();
 	private ArrayList<AbstractSite> visitedSites = new ArrayList<AbstractSite>();
 	private boolean rest;
+	private String description;
 	
 	public Excursion() {
 		
@@ -34,9 +35,21 @@ public class Excursion {
 	public void setRest(boolean rest) {
 		this.rest = rest;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Override
 	public String toString() {
 		return "Excursion [rides: " + rides + ", visitedSites: " + visitedSites + "]";
 	}
+
+	
+
+	
 }
