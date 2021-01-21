@@ -155,6 +155,15 @@ public class Queries {
 
             result.next();
             
+            // Site 1 only
+            for (int j = 2; j <= tailleSite; j++) {
+                insertStatement.setInt(1,1);
+                insertStatement.setInt(2,j);
+                // Here we insert 1 because site 1 is only accessible via bus
+                insertStatement.setInt(3, 1);
+                insertStatement.executeUpdate();
+            }
+            
             while (result.next()) {
             	for (int i = 1; i <= tailleSite; i++) {
             		if(result.getInt(1) != i) {
