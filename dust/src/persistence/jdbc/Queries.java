@@ -161,10 +161,15 @@ public class Queries {
             			insertStatement.setInt(1, result.getInt(1));
                         insertStatement.setInt(2, i);
                         
-                        if(result.getInt(1) == 19 || i == 19) {
-                            insertStatement.setInt(3, 2);
-                        } else {
+                        int siteId = result.getInt(1);
+                        
+                        //We insert inside the DB the rides where we have to use the bus
+                        if(siteId == 1 || i == 1 || siteId == 3 || i == 3 || siteId == 4 || i == 4 || siteId == 5 || i == 5 
+                        		|| siteId == 7 || i == 7 || siteId == 9 || i == 9 || siteId == 11 || i == 11 || siteId == 20 || i == 20) {
                             insertStatement.setInt(3, 1);
+                        // ...Where we use the boat
+                        } else {
+                            insertStatement.setInt(3, 2);
                         }
                         
                         insertStatement.executeUpdate();

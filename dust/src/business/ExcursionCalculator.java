@@ -8,13 +8,13 @@ import business.data.*;
 
 public class ExcursionCalculator {
 	
-	public static void initSiteList(Excursion excursion){
+	public static void initSiteList(Excursion excursion) {
 		ArrayList<Ride> rides =  excursion.getRides();
 		ArrayList<AbstractSite> sites = new ArrayList<AbstractSite>();
-		for(int index = 0; index<rides.size();index++) {
-			AbstractSite arrival = rides.get(index).getArrivalSite();
-			AbstractSite departure = rides.get(index).getDepartureSite();
-			if(index == 0) {
+		for(int i = 0; i < rides.size(); i++) {
+			AbstractSite arrival = rides.get(i).getArrivalSite();
+			AbstractSite departure = rides.get(i).getDepartureSite();
+			if(i == 0) {
 				sites.add(departure);
 			}
 			sites.add(arrival);
@@ -22,30 +22,16 @@ public class ExcursionCalculator {
 		excursion.setVisitedSites(sites);
 	}
 	
-	public static double getDistanceInKM(double lat1, double long1, double lat2, double long2) {
-		double earthRadius = 6378.137;
-		double distance;
-		lat1 = Math.toRadians(lat1);
-		lat2 = Math.toRadians(lat2);
-		long1 = Math.toRadians(long1);
-		long2 = Math.toRadians(long2);
-		distance = Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long1-long2));
-		return earthRadius * distance;
-	}
-	
 	public static int getNearestSiteToRide(ArrayList<Offer> offers, ArrayList<Ride> rides) {
 		int nearest = -1;
-		double distanceMin = 6378.137;
+		double distanceMin = Double.POSITIVE_INFINITY;
 		
 		for(Offer offer : offers) {
 			Hotel hotel = offer.getHotel();
-			for(int i=0 ; i < rides.size() ; i++) {
-				double hotelLatitude = hotel.getCoordinates().getLatitude();
-				double hotelLongitude = hotel.getCoordinates().getLongitude();
-				double siteLatitude = rides.get(i).getDepartureSite().getCoordinates().getLatitude();
-				double siteLongitude = rides.get(i).getDepartureSite().getCoordinates().getLongitude();
+			for(int i = 0; i < rides.size(); i++) {
+				Coordinates departureSiteCoords = rides.get(i).getDepartureSite().getCoordinates();
 				
-				double distance = ExcursionCalculator.getDistanceInKM(hotelLatitude, hotelLongitude, siteLatitude, siteLongitude);
+				double distance = Distance.getKMDistance(hotel.getCoordinates(), departureSiteCoords);
 				
 				if(distance <= distanceMin) {
 					distanceMin = distance;
@@ -59,12 +45,11 @@ public class ExcursionCalculator {
 	
 	public static int getNextSiteToRide(ArrayList<Ride> rides, AbstractSite arrivalSite) {
 		int index;
-		if(rides.size()>0) {
+		if(rides.size() > 0) {
 			do {
 				index = (int)(Math.random()*(rides.size()));
-			}while(!rides.get(index).getDepartureSite().getName().equals(arrivalSite.getName()));
-		}
-		else {
+			} while(!rides.get(index).getDepartureSite().getName().equals(arrivalSite.getName()));
+		} else {
 			index = -1;
 		}	
 		return index;
@@ -104,18 +89,16 @@ public class ExcursionCalculator {
 		}
 	}
 
-	private static void removeLinkedRides(AbstractSite arrivalSite, AbstractSite departureSite,
-			ArrayList<Ride> currentRides) {
+	private static void removeLinkedRides(AbstractSite arrivalSite, AbstractSite departureSite, ArrayList<Ride> currentRides) {
 		ArrayList<Ride> toRemove = new ArrayList<Ride>();
-		for(int i=0 ; i<currentRides.size() ; i++) {
+		for(int i = 0; i < currentRides.size(); i++) {
 			if(currentRides.get(i).getArrivalSite().getName().equals(arrivalSite.getName())
 				|| currentRides.get(i).getArrivalSite().getName().equals(departureSite.getName())
-				|| currentRides.get(i).getDepartureSite().getName().equals(departureSite.getName())
-				) {
+				|| currentRides.get(i).getDepartureSite().getName().equals(departureSite.getName())) {
 				toRemove.add(currentRides.get(i));
 			}
 		}
-		for(Ride ride:toRemove) {
+		for(Ride ride : toRemove) {
 			currentRides.remove(ride);
 		}
 		
@@ -123,16 +106,14 @@ public class ExcursionCalculator {
 	
 	public static void setExcursionDescription(Excursion excursion) {
 		if(excursion.isRest()) {
-			excursion.setDescription("Journée de repos !");
-		}
-		else {
+			excursion.setDescription("Rest! Chill moment... :)");
+		} else {
 			initSiteList(excursion);
 			for(int index = 0; index<excursion.getVisitedSites().size();index++) {
 				AbstractSite site = excursion.getVisitedSites().get(index);
 				if(index!=0) {
 					excursion.setDescription(excursion.getDescription()+" ----> "+site.getName());
-				}
-				else {
+				} else {
 					excursion.setDescription(site.getName());
 				}
 				
