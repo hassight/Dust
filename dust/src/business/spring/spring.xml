@@ -23,9 +23,4 @@
 	<bean id="excursion" class="business.data.Excursion" scope="prototype"/>
 	<bean id="transport" class="business.data.Transport" scope="prototype"/>
 	<bean id="ride" class="business.data.Ride" scope="prototype"/>
-	<bean id="SiteEntry" class="business.data.SiteEntry" scope="prototype"/>
-	<bean id="HotelEntry" class="business.data.HotelEntry" scope="prototype"/>
-	
-	
-
 </beans>
