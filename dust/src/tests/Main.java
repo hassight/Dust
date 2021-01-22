@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import business.OfferCalculator;
 import business.data.Offer;
 import business.data.OfferEntry;
 import business.data.Ride;
+import business.engine.OfferCalculator;
 import persistence.jdbc.Queries;
 
 public class Main {
