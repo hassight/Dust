@@ -34,13 +34,28 @@ public class Main {
 			}
 
 			OfferEntry offerEntry = new OfferEntry();
-			offerEntry.setKeywords(inputs[0]);
-			offerEntry.setSiteType(inputs[1]);
-			offerEntry.setMinPrice(Integer.valueOf(inputs[2]));
-			offerEntry.setMaxPrice(Integer.valueOf(inputs[3]));
-			offerEntry.setMinVisitDuration(Integer.valueOf(inputs[4]));
-			offerEntry.setMaxVisitDuration(Integer.valueOf(inputs[5]));
-			offerEntry.setPace(Integer.valueOf(inputs[6]));
+
+			if (!inputs[0].trim().isEmpty()) {
+				offerEntry.setKeywords(inputs[0]);
+			}
+			if (!inputs[1].trim().isEmpty()) {
+				offerEntry.setSiteType(inputs[1]);
+			}
+			if (!inputs[2].trim().isEmpty()) {
+				offerEntry.setMinPrice(Integer.valueOf(inputs[2]));
+			}
+			if (!inputs[3].trim().isEmpty()) {
+				offerEntry.setMaxPrice(Integer.valueOf(inputs[3]));
+			}
+			if (!inputs[4].trim().isEmpty()) {
+				offerEntry.setMinVisitDuration(Integer.valueOf(inputs[4]));
+			}
+			if (!inputs[5].trim().isEmpty()) {
+				offerEntry.setMaxVisitDuration(Integer.valueOf(inputs[5]));
+			}
+			if (!inputs[6].trim().isEmpty()) {
+				offerEntry.setPace(Integer.valueOf(inputs[6]));
+			}			
 			
 			OfferCalculator offerCalculator = new OfferCalculator(offerEntry);
 			ArrayList<Offer> results = offerCalculator.getOffers();
