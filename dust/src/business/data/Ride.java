@@ -41,6 +41,6 @@ public class Ride {
 
 	@Override
 	public String toString() {
-		return "Ride [departure: " + departureSite + ", arrival: " + arrivalSite + ", transport: " + transport + "]";
+		return "Ride [departure: " + departureSite + ", arrival: " + arrivalSite + ", transport: " + transport + "]" + "\n";
 	}
 }

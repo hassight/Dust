@@ -43,9 +43,10 @@ public class Offer {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Offer [price: " + price + ", hotel: " + hotel + ", excursions: " + excursions + "]";
+		return "Offer [name: " + name + ", price: " + price + ", hotel: " + hotel + ", excursions: " + excursions + "]";
 	}
 }

@@ -1,0 +1,7 @@
+keywords=tahiti
+siteType=historic
+minPrice=0
+maxPrice=3000
+minVisitDuration=3
+maxVisitDuration=6
+pace=2

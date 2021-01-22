@@ -7,6 +7,7 @@ public class Excursion {
 	private ArrayList<AbstractSite> visitedSites = new ArrayList<AbstractSite>();
 	private boolean rest;
 	private String description;
+	private String name;
 	
 	public Excursion() {
 		
@@ -44,12 +45,18 @@ public class Excursion {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Excursion [rides: " + rides + ", visitedSites: " + visitedSites + "]";
+	public String getName() {
+		return name;
 	}
 
-	
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Excursion [rides: " + rides + ", visitedSites: " + visitedSites + ", name: " + name + ", rest day: " + rest
+				+ ", description: " + description + "]";
+	}	
 }

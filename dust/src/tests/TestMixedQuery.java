@@ -19,12 +19,12 @@ public class TestMixedQuery {
 		HashMap<BigDecimal, HashMap<String, String>> hashMap;
 		try {
 			// MIXED QUERY
-			hashMap = QueriesManager.getInstance().mixedQueries("SELECT * FROM site WITH parc");
+			hashMap = QueriesManager.getInstance().mixedQueries("SELECT * FROM site WITH parc WHERE type = 'historic'");
 			System.out.println("HASHMAP RESULTS:\n" + hashMap + "\n");
 			System.out.println("SORTED KEYS:\n" + QueriesManager.getInstance().sortHashMapKeys(hashMap) + "\n");
 			
 			// SQL QUERY
-			Queries queries = QueriesManager.getInstance().executeSQLQuery("SELECT * FROM site");
+			Queries queries = QueriesManager.getInstance().executeSQLQuery("SELECT * FROM site WHERE type = 'activity'");
 			ResultSet results = queries.getResultsSet();
 			
 			while (queries.nextIterator()) {

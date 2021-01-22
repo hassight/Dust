@@ -2,10 +2,11 @@ package business.data;
 
 public class OfferEntry {
 	private String keywords = "";
+	private String siteType = "";
 	private int minPrice = 0;
 	private int maxPrice = 3000;
 	private int minVisitDuration = 2;
-	private int maxVisitDuration = 10;
+	private int maxVisitDuration = 6;
 	private int pace = 2;
 	
 	public OfferEntry() {
@@ -58,5 +59,13 @@ public class OfferEntry {
 
 	public void setPace(int pace) {
 		this.pace = pace;
+	}
+
+	public String getSiteType() {
+		return siteType;
+	}
+
+	public void setSiteType(String siteType) {
+		this.siteType = siteType;
 	}
 }

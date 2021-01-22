@@ -27,6 +27,10 @@ public class QueriesManager implements BDeAPI {
 	private boolean alreadyIndexed = false;
 	private HashMap<BigDecimal, HashMap<String, String>> mixedQueryResults;
 	
+	private QueriesManager() {
+		
+	}
+	
 	public static QueriesManager getInstance() {
 		return instance;
 	}

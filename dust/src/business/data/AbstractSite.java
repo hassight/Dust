@@ -53,7 +53,7 @@ public abstract class AbstractSite {
 
 	@Override
 	public String toString() {
-		return "AbstractSite [name: " + name + ", price: " + price + ", description: " + getDescription()
-				+ ", type: " + type + ", coordinates: " + coordinates + "]";
+		return "Site [name: " + name + ", price: " + price + ", description: " + getDescription()
+				+ ", type: " + type + "]" + "\n";
 	}
 }

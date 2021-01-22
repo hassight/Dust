@@ -28,6 +28,6 @@ public class Transport {
 	
 	@Override
 	public String toString() {
-		return "Transport [type: " + type + ", price: " + price;
+		return "Transport [type: " + type + ", price: " + price + "\n";
 	}
 }
