@@ -346,7 +346,7 @@ public class OfferCalculator {
 			generatedOffersList.add(offer);
 		}
 		
-		ExcursionCalculator.organizeExcursions(generatedOffersList, ridesList);
+		ExcursionUtility.organizeExcursions(generatedOffersList, ridesList);
 		
 		this.calculateOfferPrice(generatedOffersList);
 
@@ -368,7 +368,7 @@ public class OfferCalculator {
 			offer.setName("Offer n°" + offerNum++);
 			for(int index=0;index<offer.getExcursions().size();index++) {
 				Excursion excursion = offer.getExcursions().get(index);
-				ExcursionCalculator.setExcursionDescription(excursion);
+				ExcursionUtility.setExcursionDescription(excursion);
 				excursion.setName("Day n°" + index);
 			}	
 		}

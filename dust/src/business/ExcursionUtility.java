@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import business.data.*;
 
-public class ExcursionCalculator {
+public class ExcursionUtility {
 	
 	public static void initSiteList(Excursion excursion){
 		ArrayList<Ride> rides =  excursion.getRides();
@@ -67,7 +67,7 @@ public class ExcursionCalculator {
 			
 			for(Excursion excursion : excursions) {
 				if(!excursion.isRest()) {
-					int nearestRide = ExcursionCalculator.getNearestRideSite(offers, currentRides);
+					int nearestRide = ExcursionUtility.getNearestRideSite(offers, currentRides);
 					
 					if(nearestRide == -1) {
 						excursion.setRest(true);
@@ -77,9 +77,9 @@ public class ExcursionCalculator {
 					excursion.getRides().add(currentRides.get(nearestRide));
 					AbstractSite arrivalSite = currentRides.get(nearestRide).getArrivalSite();
 					AbstractSite departureSite = currentRides.get(nearestRide).getDepartureSite();
-					ExcursionCalculator.getRidLinkedRides(arrivalSite, departureSite, currentRides);
+					ExcursionUtility.getRidLinkedRides(arrivalSite, departureSite, currentRides);
 					
-					int nextRide = ExcursionCalculator.getNextRideSite(currentRides, arrivalSite);
+					int nextRide = ExcursionUtility.getNextRideSite(currentRides, arrivalSite);
 					
 					if(nextRide == -1) {
 						excursion.setRest(true);
@@ -87,7 +87,7 @@ public class ExcursionCalculator {
 					}
 					
 					excursion.getRides().add(currentRides.get(nextRide));
-					ExcursionCalculator.getRidLinkedRides(arrivalSite, departureSite, currentRides);
+					ExcursionUtility.getRidLinkedRides(arrivalSite, departureSite, currentRides);
 				}
 			}
 		}
